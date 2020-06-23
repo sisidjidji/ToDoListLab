@@ -7,13 +7,15 @@ import './App.css';
 
 function App() {
     return (
-     <>
+     
+     <div classeName='wrap'>
         <Header />
         <Form />
         <br></br>
         <br></br>
         <Footer />
-      </>
+     </div>
+    
     );
   
 }
