@@ -7,23 +7,27 @@ export default function Form(prop){
         <>
           <form >
             
-             <h2>you have <span>0</span> item in your list</h2>
+              <h2>you have <span>0</span> item in your list</h2>
+              <br></br>
               <label>
-              <input name='' type='text'  />
-               Eter Your To Do List 
+              Eter Your To Do List 
+              <input name='todo' type='text'  />
               </label>
+              <br></br>
+              <br></br>
               <label>
               Assigned To
               <input name='Assigned To' type='text'  />
               </label>
+              <br></br>
               <label>
-              <input name='Status' type='radio' value='complete' />
-              Complete
+              <br></br>
+              <span>Status:</span>
+             <span> Complete <input name='Status' type='radio' value='complete' /></span>
+             <span>Incomplete<input name='Status' type='radio' value='incomplete' /></span>
               </label>
-              <label>
-              <input name='Status' type='radio' value='incomplete' />
-              Incomplete
-              </label>
+              <br></br>
+              <br></br>
               <label>
               Difficulty
               <input name='Difficulty ' type='text'  />

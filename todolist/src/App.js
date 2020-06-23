@@ -9,6 +9,8 @@ function App() {
      <>
         <Header />
         <Form />
+        <br></br>
+        <br></br>
         <Footer />
       </>
     );
