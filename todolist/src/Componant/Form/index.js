@@ -52,10 +52,12 @@ export default function Form(prop){
               <input name='Difficulty ' type='text' onChange={updateDifficulty} />
               </label>
               <br></br>
-              <button type="submit" onClick={setList,increment}>Submit</button>
+              <button  onClick={setList,increment}>Submit</button>
   
           </form>
-          
+          <ul>
+       
+      </ul>
         </>
       );
 
