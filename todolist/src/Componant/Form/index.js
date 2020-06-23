@@ -27,11 +27,11 @@ export default function Form(){
     return (
         <>
           <form  onSubmit={saveList} >
-            
-    <h2>you have <span className="count">{count}</span> item in your list</h2>
+          
+              <h2>Enter Your List</h2>
               <br></br>
               <label>
-              Enter Your List 
+             Title 
               <input name='todo' type='text' onChange={updateTitle} />
               </label>
               <br></br>
@@ -50,6 +50,7 @@ export default function Form(){
               <button >Submit</button>
   
           </form>
+          <h2>you have <span className="count">{count}</span> item in your list</h2>
           <ul>
           {lists.map((list, index) => (
            <li key={index}>
