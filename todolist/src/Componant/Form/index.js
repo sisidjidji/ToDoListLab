@@ -1,4 +1,6 @@
 import React from 'react'
+import './form.scss'
+
 
 
 export default function Form(prop){
@@ -22,9 +24,9 @@ export default function Form(prop){
               <br></br>
               <label>
               <br></br>
-              <span>Status:</span>
+              Status:
              <span> Complete <input name='Status' type='radio' value='complete' /></span>
-             <span>Incomplete<input name='Status' type='radio' value='incomplete' /></span>
+             <span> Incomplete<input name='Status' type='radio' value='incomplete' /></span>
               </label>
               <br></br>
               <br></br>
