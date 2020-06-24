@@ -3,41 +3,49 @@ import './form.scss'
 
 
 
-export default function Form(prop){
+export default function Form(){
 
-    const {initialCount=0}=prop;
     const [lists,setList]=useState([]);
+    const [title,setTitle]=useState('');
     const[assigned,setAssigne]=useState('')
     const[difficulty,setDifficulty]=useState('')
-     let [count, setCount] = useState(initialCount);
-    const updateList = e => setList(e.target.value);
+    const updateTitle = e => setTitle(e.target.value);
     const updateAsseigne = e => setAssigne(e.target.value);
     const updateDifficulty = e => setDifficulty(e.target.value);
 
-    const increment = ()=> 
-    {
-      
-        setCount(count + 1);
-    };
+    const count = lists.length  
 
     const saveList = e => {
         e.preventDefault();
     
-        let newList = [...lists, {assigned,difficulty}];
+        let newList = [...lists, {title,assigned,difficulty,completed :false}];
         setList(newList);
         e.target.reset();
       };
 
-
+      const compledList = indexToUpdate => {
+        let updatedLists = lists.map((list, i) => {
+        
+          if (i !== indexToUpdate) {
+           
+            return list;
+          }
+    
+         
+          return {...lists,title,assigned,difficulty,completed :true };
+        });
+       
+        setList(updatedLists);
+      };
     return (
         <>
           <form  onSubmit={saveList} >
-            
-    <h2>you have <span className="count">{count}</span> item in your list</h2>
+          
+              <h2>Enter Your List</h2>
               <br></br>
               <label>
-              Enter Your List 
-              <input name='todo' type='text' onChange={updateList} />
+             Title 
+              <input name='todo' type='text' onChange={updateTitle} />
               </label>
               <br></br>
               <br></br>
@@ -52,12 +60,18 @@ export default function Form(prop){
               <input name='Difficulty ' type='text' onChange={updateDifficulty} />
               </label>
               <br></br>
-              <button  onClick={setList,increment}>Submit</button>
+              <button >Submit</button>
   
           </form>
+          <h2>You Have <span className="count">{count}</span> Item In Your List</h2>
           <ul>
-       
-      </ul>
+          {lists.map((list, index) => (
+           <li key={index}>
+             {list.title} (Completed: {list.completed.toString()})
+             <button onClick={() => compledList(index)}>completed</button>
+           </li>
+          ))}
+         </ul>
         </>
       );
 
