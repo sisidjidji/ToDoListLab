@@ -18,12 +18,25 @@ export default function Form(){
     const saveList = e => {
         e.preventDefault();
     
-        let newList = [...lists, {title,assigned,difficulty}];
+        let newList = [...lists, {title,assigned,difficulty,completed :false}];
         setList(newList);
         e.target.reset();
       };
 
-
+      const compledList = indexToUpdate => {
+        let updatedLists = lists.map((list, i) => {
+        
+          if (i !== indexToUpdate) {
+           
+            return list;
+          }
+    
+         
+          return {...lists,title,assigned,difficulty,completed :true };
+        });
+       
+        setList(updatedLists);
+      };
     return (
         <>
           <form  onSubmit={saveList} >
@@ -50,11 +63,12 @@ export default function Form(){
               <button >Submit</button>
   
           </form>
-          <h2>you have <span className="count">{count}</span> item in your list</h2>
+          <h2>You Have <span className="count">{count}</span> Item In Your List</h2>
           <ul>
           {lists.map((list, index) => (
            <li key={index}>
-             {list.title}
+             {list.title} (Completed: {list.completed.toString()})
+             <button onClick={() => compledList(index)}>completed</button>
            </li>
           ))}
          </ul>
