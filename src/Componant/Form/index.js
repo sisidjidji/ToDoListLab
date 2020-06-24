@@ -32,11 +32,13 @@ export default function Form(){
           }
     
          
-          return {...lists,title,assigned,difficulty,completed :true };
+          return {...lists,title,assigned,difficulty,completed :true ,background:"blue" };
         });
        
         setList(updatedLists);
       };
+
+      
     return (
         <>
           <form  onSubmit={saveList} >
@@ -66,9 +68,9 @@ export default function Form(){
           <h2>You Have <span className="count">{count}</span> Item In Your List</h2>
           <ul>
           {lists.map((list, index) => (
-           <li key={index}>
-             {list.title} (Completed: {list.completed.toString()})
-             <button onClick={() => compledList(index)}>completed</button>
+           <li key={index} >
+             {list.title} (Completed: {list.completed.toString()} )
+             <button  onClick={() => compledList(index)}>completed</button>
            </li>
           ))}
          </ul>
