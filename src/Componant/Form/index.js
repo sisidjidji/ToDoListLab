@@ -8,8 +8,8 @@ export default function Form(props){
 let [handeleSubmit,handleChange,values]=useForm(saveFromHook);
 
 function saveFromHook(formValues){
-  props.createNewList({
-    formValues,completed:false,
+  props.addToList({
+    ...formValues,completed:false,
   })
 }
 

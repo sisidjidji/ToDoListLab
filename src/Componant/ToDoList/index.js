@@ -1,17 +1,19 @@
 import React from 'react';
-import useFetch from '../../hooks/fetch';
 
-export default function ToDoList(prop){
-    const[isLoading,data]=useFetch( 'https://deltav-todo.azurewebsites.net/api/v1/Todos');
-    if(isLoading){
+
+export default function ToDoList(props){
+ 
+  
+
+    if(props.isLoading){
         return (<h2> Loading..</h2>);
     }
-
+    const count = props.list.length;
     return(
         <>
-        <h2>You Have <span className="count">0</span> Item In Your List</h2>
+        <h2>You Have <span className="count">{count}</span> Item In Your List</h2>
         <ul>
-            {data.map((item,index)=>(
+            {props.list.map((item,index)=>(
             
             <li key={index}> {item.title} (Completed: {item.completed.toString()} )</li>
             //<button  onClick={() => compledList(index)}>completed</button>
