@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-export default function useForm(onSubmit)
+function useForm(onSubmit)
 {
     const[values,setValues]= useState({});
 
@@ -22,4 +22,8 @@ export default function useForm(onSubmit)
         handeleChange,
         values,
     ];
+
+
 }
+
+export default useForm

@@ -1,80 +1,84 @@
-import React, { useState,useEffect } from 'react'
-import './form.scss'
+import React, {useState, useEffect } from 'react';
+import useForm from'../../hooks/form';
 
 
 
-export default function Form(){
+export default function Form(props){
 
-    const [lists,setList]=useState([]);
-    const [title,setTitle]=useState('');
-    const[assigned,setAssigne]=useState('')
-    const[difficulty,setDifficulty]=useState('')
-    const updateTitle = e => setTitle(e.target.value);
-    const updateAsseigne = e => setAssigne(e.target.value);
-    const updateDifficulty = e => setDifficulty(e.target.value);
+let [handeleSubmit,handleChange,values]=useForm(saveFromHook);
 
-    const count = lists.length  
+function saveFromHook(formValues){
+  props.createNewList({
+    formValues,completed:false,
+  })
+}
 
-    const saveList = e => {
-        e.preventDefault();
+let name=values.name;
+useEffect(()=>{
+  document.title=`new list: ${name}`
+},[name])
+
+    //const [lists,setList]=useState([]);
+    //const [title,setTitle]=useState('');
+    //const[assigned,setAssigne]=useState('')
+    //const[difficulty,setDifficulty]=useState('')
+    //const updateTitle = e => setTitle(e.target.value);
+    //const updateAsseigne = e => setAssigne(e.target.value);
+    //const updateDifficulty = e => setDifficulty(e.target.value);
+
+    //const count = lists.length  
+
+   // const saveList = e => {
+      //   e.preventDefault();
     
-        let newList = [...lists, {title,assigned,difficulty,completed :false}];
-        setList(newList);
-        e.target.reset();
-      };
+      //   let newList = [...lists, {title,assigned,difficulty,completed :false}];
+      //   setList(newList);
+      //   e.target.reset();
+      // };
 
-      const compledList = indexToUpdate => {
-        let updatedLists = lists.map((list, i) => {
+      // const compledList = indexToUpdate => {
+      //   let updatedLists = lists.map((list, i) => {
         
-          if (i !== indexToUpdate) {
+      //     if (i !== indexToUpdate) {
            
-            return list;
-          }
+      //       return list;
+      //     }
     
          
-          return {...lists,title,assigned,difficulty,completed :true ,background:"blue" };
-        });
+      //     return {...lists,title,assigned,difficulty,completed :true ,background:"blue" };
+      //   });
        
-        setList(updatedLists);
-      };
+      //   setList(updatedLists);
+      // };
 
       
     return (
         <>
-          <form  onSubmit={saveList} >
+          <form  onSubmit={handeleSubmit} >
           
               <h2>Enter Your List</h2>
               <br></br>
               <label>
              Title 
-              <input name='todo' type='text' onChange={updateTitle} />
+              <input name='title' type='text' onChange={handleChange} />
               </label>
               <br></br>
               <br></br>
               <label>
               Assigned To
-              <input name='Assigned To' type='text' onChange={updateAsseigne} />
+              <input name='assigned' type='text' onChange={handleChange} />
               </label>
               <br></br>
               <br></br>
               <label>
               Difficulty
-              <input name='Difficulty ' type='text' onChange={updateDifficulty} />
+              <input name='Difficulty ' type='text' onChange={handleChange} />
               </label>
               <br></br>
               <button >Submit</button>
   
           </form>
-          <h2>You Have <span className="count">{count}</span> Item In Your List</h2>
-          <ul>
-          {lists.map((list, index) => (
-           <li key={index} >
-             {list.title} (Completed: {list.completed.toString()} )
-             <button  onClick={() => compledList(index)}>completed</button>
-           </li>
-          ))}
-         </ul>
-        </>
+         </>
       );
 
 }
