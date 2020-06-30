@@ -4,7 +4,7 @@ import React from 'react';
 export default function ToDoList(props){
  
   
-
+ 
     if(props.isLoading){
         return (<h2> Loading..</h2>);
     }
@@ -16,7 +16,7 @@ export default function ToDoList(props){
             {props.list.map((item,index)=>(
             
             <li key={index}> {item.title} (Completed: {item.completed.toString()} )</li>
-            //<button  onClick={() => compledList(index)}>completed</button>
+           
     ))}
             
         </ul>

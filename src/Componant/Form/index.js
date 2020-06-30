@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from 'react';
 import useForm from'../../hooks/form';
+import './form.scss';
 
 
 
@@ -36,13 +37,7 @@ useEffect(()=>{
       //   e.target.reset();
       // };
 
-      // const compledList = indexToUpdate => {
-      //   let updatedLists = lists.map((list, i) => {
-        
-      //     if (i !== indexToUpdate) {
-           
-      //       return list;
-      //     }
+     
     
          
       //     return {...lists,title,assigned,difficulty,completed :true ,background:"blue" };
