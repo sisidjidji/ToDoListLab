@@ -17,7 +17,7 @@ export default function App(){
        
    }
     return (
-        <div classeName='wrap'>
+        <div className='wrap'>
         <Header />
         <Form addToList={addToDoList} />
         <br></br>

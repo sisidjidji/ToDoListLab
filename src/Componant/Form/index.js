@@ -6,7 +6,7 @@ import './form.scss';
 
 export default function Form(props){
 
-let [handeleSubmit,handleChange,values]=useForm(saveFromHook);
+let [handelSubmit,handleChange,values]=useForm(saveFromHook);
 
 function saveFromHook(formValues){
   props.addToList({
@@ -49,7 +49,7 @@ useEffect(()=>{
       
     return (
         <>
-          <form  onSubmit={handeleSubmit} >
+          <form  onSubmit={handelSubmit} >
           
               <h2>Enter Your List</h2>
               <br></br>

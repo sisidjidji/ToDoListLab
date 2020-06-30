@@ -4,12 +4,12 @@ function useForm(onSubmit)
 {
     const[values,setValues]= useState({});
 
-    const handeleSubmit=e=>{
+    const handelSubmit=e=>{
         e.preventDefault();
         onSubmit(values)
     }
 
-    const handeleChange=e=>{
+    const handelChange=e=>{
         const {name,value}=e.target;
         setValues(values=>({
             ...values,
@@ -18,8 +18,8 @@ function useForm(onSubmit)
     }
 
     return[
-        handeleSubmit,
-        handeleChange,
+        handelSubmit,
+        handelChange,
         values,
     ];
 
